@@ -1,9 +1,8 @@
 package com.example.jpa_assignment.entities;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+
 @Entity
 public class Recipe {
 
@@ -36,6 +35,23 @@ public class Recipe {
     public Recipe(String recipeName, RecipeInstruction instruction) {
         this.recipeName = recipeName;
         this.instruction = instruction;
+        setRecipeIngredients(new ArrayList<>());
+        setCategories(new HashSet<>());
+    }
+
+    public void addRecipeIngredient(RecipeIngredient recipeIngre){
+        recipeIngredients.add(recipeIngre);
+        recipeIngre.setRecipe(this);
+    }
+
+    public void removeRecipeIngredient(RecipeIngredient recipeIngre){
+        recipeIngre.setRecipe(null);
+        recipeIngredients.remove(recipeIngre);
+    }
+
+    public void addRecipeCategory(RecipeCategory recipeCateg){
+        categories.add(recipeCateg);
+        recipeCateg.getRecipes().add(this);
     }
 
     public int getRecipeId() {
