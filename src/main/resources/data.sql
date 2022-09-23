@@ -1,4 +1,3 @@
-#Ingredient
 INSERT INTO jpa_assignment.ingredient (ingredient_id, ingredient_name)VALUES (501, 'Egg');
 INSERT INTO jpa_assignment.ingredient (ingredient_id, ingredient_name)VALUES (502, 'Milk');
 INSERT INTO jpa_assignment.ingredient (ingredient_id, ingredient_name)VALUES (503, 'Cheese');
@@ -15,7 +14,6 @@ INSERT INTO jpa_assignment.ingredient (ingredient_id, ingredient_name)VALUES (51
 INSERT INTO jpa_assignment.ingredient (ingredient_id, ingredient_name)VALUES (514, 'Fish');
 INSERT INTO jpa_assignment.ingredient (ingredient_id, ingredient_name)VALUES (515, 'Tomato');
 
-#RecipeInstructio
 INSERT INTO jpa_assignment.recipe_instruction (recipe_instruction_id, instructions)VALUES (101,'instruction for pasta');
 INSERT INTO jpa_assignment.recipe_instruction (recipe_instruction_id, instructions)VALUES (102,'instruction for cake');
 INSERT INTO jpa_assignment.recipe_instruction (recipe_instruction_id, instructions)VALUES (103,'instruction for baking chicken');
@@ -23,7 +21,6 @@ INSERT INTO jpa_assignment.recipe_instruction (recipe_instruction_id, instructio
 INSERT INTO jpa_assignment.recipe_instruction (recipe_instruction_id, instructions)VALUES (105,'instruction for Pancake');
 INSERT INTO jpa_assignment.recipe_instruction (recipe_instruction_id, instructions)VALUES (106,'instruction for Salad');
 
-#Recipe
 INSERT INTO jpa_assignment.recipe (recipe_id, recipe_name, instruction_id)VALUES (201, 'Vanilla cake', 102);
 INSERT INTO jpa_assignment.recipe (recipe_id, recipe_name, instruction_id)VALUES (202, 'Grill chicken', 103);
 INSERT INTO jpa_assignment.recipe (recipe_id, recipe_name, instruction_id)VALUES (203, 'Alfredo pasta', 101);
@@ -31,8 +28,7 @@ INSERT INTO jpa_assignment.recipe (recipe_id, recipe_name, instruction_id)VALUES
 INSERT INTO jpa_assignment.recipe (recipe_id, recipe_name, instruction_id)VALUES (205, 'Mini Pancake', 105);
 INSERT INTO jpa_assignment.recipe (recipe_id, recipe_name, instruction_id)VALUES (206, 'Mushroom salad', 106);
 
-#RecipeCategory
-INSERT INTO jpa_assignment.recipe_category (recipe_category_id, category)VALUES (301, 'SeaFood');
+INSERT INTO jpa_assignment.recipe_category (recipe_category_id, category)VALUES (301, 'Soup');
 INSERT INTO jpa_assignment.recipe_category (recipe_category_id, category)VALUES (302, 'Breakfast');
 INSERT INTO jpa_assignment.recipe_category (recipe_category_id, category)VALUES (303, 'Vegetarian');
 INSERT INTO jpa_assignment.recipe_category (recipe_category_id, category)VALUES (304, 'Appetisers');
@@ -41,7 +37,6 @@ INSERT INTO jpa_assignment.recipe_category (recipe_category_id, category)VALUES 
 INSERT INTO jpa_assignment.recipe_category (recipe_category_id, category)VALUES (307, 'Holiday');
 INSERT INTO jpa_assignment.recipe_category (recipe_category_id, category)VALUES (308, 'Grill food');
 
-#RecipeIngredient
 INSERT INTO jpa_assignment.recipe_ingredient (recipe_ingredient_id, amount, measurement, ingredient_ingredient_id, recipe_id)VALUES (401, 70, 2, 501, 201);
 INSERT INTO jpa_assignment.recipe_ingredient (recipe_ingredient_id, amount, measurement, ingredient_ingredient_id, recipe_id)VALUES (402, 400, 2, 505, 201);
 INSERT INTO jpa_assignment.recipe_ingredient (recipe_ingredient_id, amount, measurement, ingredient_ingredient_id, recipe_id)VALUES (403, 200, 2, 513, 201);
@@ -69,7 +64,6 @@ INSERT INTO jpa_assignment.recipe_ingredient (recipe_ingredient_id, amount, meas
 INSERT INTO jpa_assignment.recipe_ingredient (recipe_ingredient_id, amount, measurement, ingredient_ingredient_id, recipe_id)VALUES (425, 300, 2, 515, 206);
 INSERT INTO jpa_assignment.recipe_ingredient (recipe_ingredient_id, amount, measurement, ingredient_ingredient_id, recipe_id)VALUES (426, 2, 1, 511, 206);
 
-#Recipe-RecipeCategory
 INSERT INTO jpa_assignment.recipe_category_recipes (categories_recipe_category_id, recipes_recipe_id)VALUES (305, 201);
 INSERT INTO jpa_assignment.recipe_category_recipes (categories_recipe_category_id, recipes_recipe_id)VALUES (307, 201);
 INSERT INTO jpa_assignment.recipe_category_recipes (categories_recipe_category_id, recipes_recipe_id)VALUES (306, 202);
