@@ -2,5 +2,6 @@
 
 * Class Diagram
 
->![](C:\Users\asus\Desktop\diagram.JPG).
+>![img.png](C:\Users\asus\Desktop\img.PNG)
+> [img.png](img/img.png)
 
