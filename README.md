@@ -2,6 +2,5 @@
 
 * Class Diagram
 
+>![](C:\Users\asus\Desktop\diagram.JPG).
 
-
-![](C:\Users\asus\Desktop\diagram.JPG)
