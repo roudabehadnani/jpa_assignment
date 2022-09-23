@@ -16,8 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static com.example.jpa_assignment.entities.Measurement.*;
-
 
 @Transactional
 @Component
@@ -43,58 +41,21 @@ public class MyCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        Ingredient salt = ingredientRepo.save(new Ingredient("Salt"));
 
+        RecipeInstruction instructionFish = recipeInstructionRepo.save(new RecipeInstruction("instruction for grill fish"));
 
+        Recipe salmon = recipeRepo.save(new Recipe("Grill Salmon",instructionFish));
 
-        Ingredient ingredient1 = ingredientRepo.save(new Ingredient("Egg"));
-        Ingredient ingredient2 = ingredientRepo.save(new Ingredient("Milk"));
-        Ingredient ingredient3 = ingredientRepo.save(new Ingredient("Cheese"));
-        Ingredient ingredient4 = ingredientRepo.save(new Ingredient("Chicken"));
-        Ingredient ingredient5 = ingredientRepo.save(new Ingredient("flour"));
-        Ingredient ingredient6 = ingredientRepo.save(new Ingredient("cheddar cheese"));
-        Ingredient ingredient7 = ingredientRepo.save(new Ingredient("pasta"));
-        Ingredient ingredient8 = ingredientRepo.save(new Ingredient("onion"));
-        Ingredient ingredient9 = ingredientRepo.save(new Ingredient("Butter"));
-        Ingredient ingredient10 = ingredientRepo.save(new Ingredient("Mustard"));
+        RecipeCategory seaFood = new RecipeCategory("Sea Food");
 
-        RecipeInstruction instruction1 = recipeInstructionRepo.save(new RecipeInstruction("cake instruction"));
-        RecipeInstruction instruction2 = recipeInstructionRepo.save(new RecipeInstruction("Chicken grill instruction"));
-        RecipeInstruction instruction3 = recipeInstructionRepo.save(new RecipeInstruction("Waffle instruction"));
-        RecipeInstruction instruction4 = recipeInstructionRepo.save(new RecipeInstruction("Pasta instruction"));
-        RecipeInstruction instruction5 = recipeInstructionRepo.save(new RecipeInstruction("Pancake instruction"));
-
-
-        Recipe recipe1 = recipeRepo.save(new Recipe("Vanilla cake",instruction1));
-        Recipe recipe2 = recipeRepo.save(new Recipe("Grill chicken",instruction2));
-        Recipe recipe3 = recipeRepo.save(new Recipe("Waffle",instruction3));
-        Recipe recipe4 = recipeRepo.save(new Recipe("Alfredo pasta",instruction4));
-        Recipe recipe5 = recipeRepo.save(new Recipe("Mini Pancake",instruction5));
-
-        RecipeCategory recipeCategory1 = new RecipeCategory("SeaFood");
-        RecipeCategory recipeCategory2 = new RecipeCategory("Breakfast");
-        RecipeCategory recipeCategory3 = new RecipeCategory("Vegetarian");
-        RecipeCategory recipeCategory4 = new RecipeCategory("Appetisers");
-        RecipeCategory recipeCategory5 = new RecipeCategory("Grill food");
-        RecipeCategory recipeCategory6 = new RecipeCategory("Lunch");
-        RecipeCategory recipeCategory7 = new RecipeCategory("Holiday");
-        RecipeCategory recipeCategory8 = new RecipeCategory("Desserts");
-
-       RecipeIngredient recipeIngredient1 = recipeIngredientRepo.save(new RecipeIngredient(ingredient5,200, TBSP));
-
-        recipe1.addRecipeIngredient(recipeIngredient1);
-
-        recipe1.addRecipeCategory(recipeCategory8);
-        recipe2.addRecipeCategory(recipeCategory7);
-        recipe2.addRecipeCategory(recipeCategory5);
-        recipe2.addRecipeCategory(recipeCategory6);
-        recipe5.addRecipeCategory(recipeCategory2);
-        recipe5.addRecipeCategory(recipeCategory8);
+        salmon.addRecipeCategory(seaFood);
 
 
 //------------Ingredient Repository
-        Optional<Ingredient> foundName = ingredientRepo.findIngredientByIngredientName("pasta");
+        Optional<Ingredient> foundIngredientName = ingredientRepo.findIngredientByIngredientName("Pasta");
         entityManager.flush();
-        foundName.ifPresent(System.out::println);
+        foundIngredientName.ifPresent(System.out::println);
 
         List<Ingredient> foundPartOfName = ingredientRepo.findIngredientByPartOfIngredientName("cheese");
         foundPartOfName.forEach(System.out::println);
@@ -106,18 +67,11 @@ public class MyCommandLineRunner implements CommandLineRunner {
         List<Recipe> foundRecipeByIngredientName = recipeRepo.findRecipesByRecipeIngredientsIngredientIngredientNameIgnoreCase("flour");
         foundRecipeByIngredientName.forEach(recipe -> System.out.println(recipe.getRecipeName()));
 
-        List<Recipe> foundRecipes = recipeRepo.findAllByCategoriesCategoryIgnoreCase("Desserts");
-        foundRecipes.forEach(recipe -> System.out.println(recipe.getRecipeName()));
+        List<Recipe> foundRecipesByCategory = recipeRepo.findAllByCategoriesCategoryIgnoreCase("Desserts");
+        foundRecipesByCategory.forEach(recipe -> System.out.println(recipe.getRecipeName()));
 
-        List<Recipe> recipesFound = recipeRepo.findAllDistinctByCategoriesCategoryInIgnoreCase(Arrays.asList("Desserts", "Lunch", "Breakfast"));
+        List<Recipe> recipesFound = recipeRepo.findAllDistinctByCategoriesCategoryInIgnoreCase(Arrays.asList("Desserts", "Lunch"));
         recipesFound.forEach(recipe -> System.out.println(recipe.getRecipeName()));
-
-
-
-
-
-
-
 
 
     }
